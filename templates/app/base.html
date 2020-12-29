@@ -1,0 +1,120 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="{{ site_option.0.meta_description|default:"" }}">
+    <meta name="author" content="{{ site_option.0.meta_author|default:"" }}">
+    <link rel="icon" href="{% static 'img/favicons/favicon.ico' %}">
+
+    <title>Blogger- Aditya </title>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'img/favicons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'img/favicons/site.webmanifest' %}">
+    <link rel="mask-icon" href="" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+
+    <link href="{% static 'css/ui.css' %}" rel="stylesheet">
+
+    <!-- Facebook Open Graph -->
+    
+
+    <!-- Header section from admin panel -->
+    
+</head>
+
+<body>
+    <div class="container">
+        <header class="blog-header py-3">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+                <!--
+          <div class="col-4 pt-1">
+            <a class="text-muted" href="#">Subscribe</a>
+          </div> -->
+                <div class="col-4 text-center">
+                    <a class="blog-header-logo text-dark" href="/">
+                        <img src={% static "img/download.png"%}  height="140" width="auto">
+                    </a>
+                </div>
+            </div>
+        </header>
+        <div class="nav-scroller py-1 mb-2" style="overflow:hidden;">
+                <div class="float-left"><nav class="nav">
+                        <a class="p-2 text-muted" href="/">Home</a>
+                    </nav></div>
+
+                    {% if user.is_authenticated %}
+                    <div class="float-left"><nav class="nav">
+                    <a class="p-2 text-muted" href="{% url 'create_post' %}">Create Post</a></nav></div>
+                    <div class="float-left"><nav class="nav">
+                    <a class="p-2 text-muted" href="{% url 'logout_user' %}">Logout</a></nav></div>
+
+                    {% else %}
+                    <div class="float-left"><nav class="nav">
+                    <a class="p-2 text-muted" href="{% url 'register' %}">Register Yourself</a></nav></div>
+                    <div class="float-left"><nav class="nav">
+                    <a class="p-2 text-muted" href="{% url 'login_user' %}">Login</a></nav></div>
+            
+                    {% endif %}
+
+                
+                
+        </div>
+
+        {% block content %}
+        {% endblock %}
+    </div>
+    
+    <div class="mb-4"></div>
+
+    <footer class="blog-footer">
+        <div class="row">
+            <div class="col-sm-4">
+                <p>Used Softwares<br>
+                    <a>Django</a> |
+                    <a>Bootstrap</a> |
+                    <a>Postgress as database</a>
+                    <br>
+                    <a>HTML and CSS</a> | 
+                    
+
+                </p>
+            </div>
+            <div class="col-sm-4">
+                <p>
+                    Developed by
+                    <a>Aditya Poddar</a>
+                </p>
+            </div>
+            <div class="col-sm-4">
+                <p>
+                    <a href="#">Back to top</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+    <script src="{% static 'js/vendor/holder.min.js' %}"></script>
+
+    {% block script %}
+    {% endblock %}
+</body>
+</html>

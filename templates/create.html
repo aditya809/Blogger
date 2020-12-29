@@ -1,0 +1,50 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+    <div class="container" align="center">
+        <form action="{% url 'create_post' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h2>Create a Post</h2></div>
+                    <div class="panel-body">
+                        {% if error_message %}
+                            <p class="bg-danger p-d ml-b">{{ error_message }}</p>
+                        {% endif %}
+                       
+                        <div class="form-group clearfix" align="center">
+                            <label for="{{ form1.title.id_for_label }}" class="col-md-4 control-label text-center">Title of Post<span class="text-red"></span>:</label>
+                            <div class="col-md-6">
+                                {{ form1.title }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix" align="center">
+                            <label for="{{ form1.short_description_for_label }}" class="col-md-4 control-label text-center">Short Description<span class="text-red"></span>:</label>
+                            <div class="col-md-6">
+                                {{ form1.short_description }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix" align="center">
+                            <label for="{{ form1.url_for_label }}" class="col-md-4 control-label text-center">URL Link<span class="text-red"></span>:</label>
+                            <div class="col-md-6">
+                                {{ form1.url }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix" align="center">
+                            <label for="{{ form1.image_photo.id_for_label }}" class="col-md-4 control-label text-center">Image upload</label>
+                            <div class="col-md-6">
+                                {{ form1.image_photo }}
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        <div class="col-md-6 col-md-offset-4">
+                            <input type="submit" value="Upload" class="btn btn-success">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
